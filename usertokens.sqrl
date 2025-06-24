@@ -11,8 +11,8 @@ UsageAlert := SUBSCRIBE SELECT userid, total_tokens, window_start, window_time
                         FROM _TokenUsageHourWindow WHERE total_tokens > 1000000;
 
 /*+query_by_all(userid) */
-UserTokenUsageHourly2 := DISTINCT _TokenUsageHourWindow ON userid, window_start ORDER BY window_time DESC;
+UserTokenUsageHourly3 := DISTINCT _TokenUsageHourWindow ON userid, window_start ORDER BY window_time DESC;
 
 /*+test */
-UserTokenTest := SELECT userid, window_time, total_tokens FROM UserTokenUsageHourly2
+UserTokenTest := SELECT userid, window_time, total_tokens FROM UserTokenUsageHourly3
                  ORDER BY userid ASC, window_time DESC;
